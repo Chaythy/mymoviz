@@ -1,119 +1,106 @@
-
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faStar, faVideo} from '@fortawesome/free-solid-svg-icons';
-
+import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
+import Movie from './components/Movie'
 
 import {
-  Nav,
-  NavItem,
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardText,
-  Col,
-  Container,
-  Badge,
-} from 'reactstrap';
+    Nav,
+    NavItem,
+    Button, Container,
+    Row,
+} from 'reactstrap'
 
-
-
-function App() {
-
-var color={color: '#f1c40f'};
-
-
-  return (
-
-    <div>
-      
-        <Nav
-        >
-          <NavItem>
-            <img alt="logo" src="./logo.png" />
-          </NavItem>
-          <NavItem>
-            Lasts Releases
-          </NavItem>
-          <NavItem>
-            <Button color="primary">11 films</Button>
-          </NavItem>
-        </Nav>
-
-
-        
-          <Col xs="12" lg="6" xl="4">
-            <Card>
-              <img
-                alt="Stars-Wars"
-                src="./starwars.jpg"
-                width="100%"
-              />
-              <CardBody>
-                <CardText>
-                  Like
-                  <FontAwesomeIcon style={color} icon={faHeart} />
-                </CardText>
-                <CardText>
-                  Nombre de vues
-                  <FontAwesomeIcon icon={faVideo} />
-                  <Badge color="primary">
-                    2
-                  </Badge>
-                </CardText>
-                <CardText>
-                  Mon avis
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar}/>
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-
-                  <ButtonGroup>
-                    <Button>
-                      -
-                    </Button>
-                    <Button>
-                      +
-                    </Button>
-                  </ButtonGroup>
-                </CardText>
-                <CardText>
-                  Moyenne
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-                  <FontAwesomeIcon icon={faStar} />
-
-                </CardText>
-                <CardText>
-                  Star Wars : L'Ascension de Skywalker
-                </CardText>
-                <CardText>
-                  La conclusion de la saga Skywalker. De nouvelles légendes vont naître dans cette episode.
-                </CardText>
-              </CardBody>
-            </Card>
-          </Col>
-          
-
-      
-    </div>
-  );
+const movie = {
+    name: 'Star Wars',
+    desc: 'La conclusion de la saga Skywalker. De nouvelles légendes vont naître dans cette episode.',
+    img: './starwars.jpg',
+    note: 6,
+    vote: 7,
 }
 
-export default App;
+function App() {
+    const movies = [
+        {
+            name: 'Star Wars',
+            desc: 'La conclusion de la saga Skywalker. De nouvelles légendes vont naître dans cette episode.',
+            img: './starwars.jpg',
+            note: 6,
+            vote: 7,
+        },
+
+        {
+            name: 'Malelique',
+            desc: 'Blablabla.....',
+            img: './maleficent.jpg',
+            note: 4,
+            vote: 9,
+        },
+        {
+            name: 'Malelique',
+            desc: 'Blablabla.....',
+            img: './maleficent.jpg',
+            note: 4,
+            vote: 9,
+        },
+        {
+            name: 'Malelique',
+            desc: 'Blablabla.....',
+            img: './maleficent.jpg',
+            note: 4,
+            vote: 9,
+        }, {
+            name: 'Malelique',
+            desc: 'Blablabla.....',
+            img: './maleficent.jpg',
+            note: 4,
+            vote: 9,
+        },
+
+    ]
+
+    return (
+
+        <div style={{backgroundColor: "#333333"}}>
+
+            <Nav style={{
+                justifyContent: "center",
+                alignItems: "center",
+                padding: 10
+            }}>
+                <NavItem>
+                    <img alt="logo" src="./logo.png"/>
+                </NavItem>
+                <NavItem style={{color: "white"}}>
+                    Lasts Releases
+                </NavItem>
+                <NavItem>
+                    <Button color="primary">11 films</Button>
+                </NavItem>
+            </Nav>
+
+            <Container>
+                <Row>
+                    {movies.map((movie, i) => {
+                            return (
+                                <Movie
+                                    movieName={movie.name}
+                                    movieDesc={movie.desc}
+                                    movieImg={movie.img}
+                                    globalRating={movie.note}
+                                    globalCountRating={movie.vote}
+
+
+                                />
+
+                            )
+                        },
+                    )}
+                </Row>
+            </Container>
+
+
+        </div>
+    )
+}
+
+export default App
